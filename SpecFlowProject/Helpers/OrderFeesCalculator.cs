@@ -1,9 +1,15 @@
 using SpecFlowProject.Client.Constants;
 
-namespace SpecFlowProject.Client;
+namespace SpecFlowProject.Helpers;
 
-public class FakeApiClient
+public class OrderFeesCalculator
 {
+    //!!!!!!!!!!!!!!!!!!!!
+    //in case with real api we need to implement method
+    //which calculate total order price with fees and discounts
+    //in this case I utilized (unfortunately) code duplication
+    //possible hard code expected result total order values into scenario examples
+    
     private readonly TimeSpan _timeSpan = DateTime.UtcNow.TimeOfDay;
     public double GetOderPriceTotal(Dictionary<string, int> orderedFood, TimeSpan setTime = default)
     {

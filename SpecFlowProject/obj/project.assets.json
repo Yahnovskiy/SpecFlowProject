@@ -6383,6 +6383,7 @@
       "Gherkin >= 19.0.3",
       "Microsoft.NET.Test.Sdk >= 17.0.0",
       "NUnit3TestAdapter >= 4.1.0",
+      "SpecFlow >= 3.9.22",
       "SpecFlow.NUnit >= 3.9.22",
       "SpecFlow.Plus.LivingDocPlugin >= 3.9.57",
       "nunit >= 3.13.2"
@@ -6440,6 +6441,10 @@
           "NUnit3TestAdapter": {
             "target": "Package",
             "version": "[4.1.0, )"
+          },
+          "SpecFlow": {
+            "target": "Package",
+            "version": "[3.9.22, )"
           },
           "SpecFlow.NUnit": {
             "target": "Package",

@@ -6,5 +6,14 @@ namespace SpecFlowProject.Hooks
     [Binding]
     public class Hooks
     {
+        //possible to add next methods
+        //BeforeScenario
+        //remove old data
+        //-create user (set into db)
+        //-set prices for food
+        
+        //AfterScenario
+        //-delete user
+        //-set default food prices
     }
 }

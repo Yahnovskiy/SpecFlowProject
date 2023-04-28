@@ -74,12 +74,17 @@ namespace SpecFlowProject.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add two numbers")]
-        public virtual void AddTwoNumbers()
+        [NUnit.Framework.DescriptionAttribute("Place and calculate order")]
+        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", null)]
+        public virtual void PlaceAndCalculateOrder(string drinks, string starters, string mains, string time, string[] exampleTags)
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add two numbers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            argumentsOfScenario.Add("Drinks", drinks);
+            argumentsOfScenario.Add("Starters", starters);
+            argumentsOfScenario.Add("Mains", mains);
+            argumentsOfScenario.Add("Time", time);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place and calculate order", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 3
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -101,22 +106,26 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Food",
-                            "Count"});
-                table1.AddRow(new string[] {
                             "Drinks",
-                            "4"});
-                table1.AddRow(new string[] {
                             "Starters",
-                            "4"});
-                table1.AddRow(new string[] {
                             "Mains",
-                            "4"});
+                            "Time"});
+                table1.AddRow(new string[] {
+                            string.Format("{0}", drinks),
+                            string.Format("{0}", starters),
+                            string.Format("{0}", mains),
+                            string.Format("{0}", time)});
 #line 4
- testRunner.Given("Calculate total price", ((string)(null)), table1, "Given ");
+ testRunner.Given("I place order", ((string)(null)), table1, "Given ");
+#line hidden
+#line 7
+ testRunner.When("I get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 8
+ testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
- testRunner.Then("I should have \'11.88\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

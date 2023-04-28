@@ -1,0 +1,1 @@
+Constants can be added as an external link or json or config file

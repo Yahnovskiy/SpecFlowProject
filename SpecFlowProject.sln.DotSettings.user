@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=20688180_002D437b_002D45bb_002D8038_002D43cbf6222958/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlaceAndCalculateOrder(&amp;quot;4&amp;quot;,&amp;quot;4&amp;quot;,&amp;quot;4&amp;quot;,&amp;quot;Now&amp;quot;,null)" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;NUnit3x::10221202-2D13-4C90-B5A2-7749A5E2CC24::net7.0::SpecFlowProject.Features.OrderCalculationFeature.PlaceAndCalculateOrder("4","4","4","Now",null)&lt;/TestId&gt;
+    &lt;TestId&gt;NUnit3x::10221202-2D13-4C90-B5A2-7749A5E2CC24::net7.0::SpecFlowProject.Features.OrderCalculationFeature&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Housekeeping/UnitTestingMru/UnitTestRunner/HangingTestRunnerResponse/@EntryValue">KillProcess</s:String></wpf:ResourceDictionary>

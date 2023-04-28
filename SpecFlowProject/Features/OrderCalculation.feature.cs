@@ -116,15 +116,175 @@ this.ScenarioInitialize(scenarioInfo);
                             string.Format("{0}", mains),
                             string.Format("{0}", time)});
 #line 4
- testRunner.Given("I place order", ((string)(null)), table1, "Given ");
+ testRunner.Given("I store my order", ((string)(null)), table1, "Given ");
 #line hidden
 #line 7
- testRunner.When("I get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I place order and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
  testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
+ testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Place, update and calculate order with time")]
+        [NUnit.Framework.TestCaseAttribute("2", "1", "2", "18:00", "2", "2", "20:00", null)]
+        public virtual void PlaceUpdateAndCalculateOrderWithTime(string drinksBefore, string startersBefore, string mainsBefore, string timeBefore, string drinksAfter, string mainsAfter, string timeAfter, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("DrinksBefore", drinksBefore);
+            argumentsOfScenario.Add("StartersBefore", startersBefore);
+            argumentsOfScenario.Add("MainsBefore", mainsBefore);
+            argumentsOfScenario.Add("TimeBefore", timeBefore);
+            argumentsOfScenario.Add("DrinksAfter", drinksAfter);
+            argumentsOfScenario.Add("MainsAfter", mainsAfter);
+            argumentsOfScenario.Add("TimeAfter", timeAfter);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place, update and calculate order with time", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 14
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Drinks",
+                            "Starters",
+                            "Mains",
+                            "Time"});
+                table2.AddRow(new string[] {
+                            string.Format("{0}", drinksBefore),
+                            string.Format("{0}", startersBefore),
+                            string.Format("{0}", mainsBefore),
+                            string.Format("{0}", timeBefore)});
+#line 15
+  testRunner.Given("I store my order", ((string)(null)), table2, "Given ");
+#line hidden
+#line 18
+  testRunner.And("I place order and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 19
+  testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 20
+  testRunner.And("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Drinks",
+                            "Starters",
+                            "Mains",
+                            "Time"});
+                table3.AddRow(new string[] {
+                            string.Format("{0}", drinksAfter),
+                            "<StartersAfter>",
+                            string.Format("{0}", mainsAfter),
+                            string.Format("{0}", timeAfter)});
+#line 21
+  testRunner.When("I add food to my order when drinks non discounted", ((string)(null)), table3, "When ");
+#line hidden
+#line 24
+  testRunner.And("I place order with new items and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+  testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Place, update and calculate order")]
+        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "3", "3", "3", null)]
+        public virtual void PlaceUpdateAndCalculateOrder(string drinks, string starters, string mains, string time, string drinksUpdated, string startersUpdated, string mainsUpdated, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Drinks", drinks);
+            argumentsOfScenario.Add("Starters", starters);
+            argumentsOfScenario.Add("Mains", mains);
+            argumentsOfScenario.Add("Time", time);
+            argumentsOfScenario.Add("DrinksUpdated", drinksUpdated);
+            argumentsOfScenario.Add("StartersUpdated", startersUpdated);
+            argumentsOfScenario.Add("MainsUpdated", mainsUpdated);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place, update and calculate order", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 30
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Drinks",
+                            "Starters",
+                            "Mains",
+                            "Time"});
+                table4.AddRow(new string[] {
+                            string.Format("{0}", drinks),
+                            string.Format("{0}", starters),
+                            string.Format("{0}", mains),
+                            string.Format("{0}", time)});
+#line 31
+ testRunner.Given("I store my order", ((string)(null)), table4, "Given ");
+#line hidden
+#line 34
+ testRunner.And("I place order and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 35
+ testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 36
+ testRunner.And("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Drinks",
+                            "Starters",
+                            "Mains",
+                            "Time"});
+                table5.AddRow(new string[] {
+                            string.Format("{0}", drinksUpdated),
+                            string.Format("{0}", startersUpdated),
+                            string.Format("{0}", mainsUpdated),
+                            string.Format("{0}", time)});
+#line 37
+ testRunner.When("I update current order", ((string)(null)), table5, "When ");
+#line hidden
+#line 40
+ testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 41
  testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

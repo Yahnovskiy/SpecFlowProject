@@ -14,4 +14,10 @@ public static class NumberExtensions
         double d = double.Parse(value, CultureInfo.InvariantCulture);
         return Math.Round(d, 2, MidpointRounding.AwayFromZero);
     }
+
+    public static double ToDouble(this object obj)
+    {
+        IConvertible convert = obj as IConvertible;
+        return convert?.ToDouble(null) ?? 0d;
+    }
 }

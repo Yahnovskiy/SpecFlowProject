@@ -4,14 +4,14 @@ namespace SpecFlowProject.Helpers;
 
 public static class ObjectToDictionaryHelper
 {
-    public static Dictionary<string, int> ToDictionary(this object source)
+    public static Dictionary<string, object> ToDictionary(this object source)
     {
         if (source == null)
             ThrowExceptionWhenSourceArgumentIsNull();
 
-        var dictionary = new Dictionary<string, int>();
+        var dictionary = new Dictionary<string, object>();
         foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
-            AddPropertyToDictionary<int>(property, source, dictionary);
+            AddPropertyToDictionary<object>(property, source, dictionary);
         return dictionary;
     }
 

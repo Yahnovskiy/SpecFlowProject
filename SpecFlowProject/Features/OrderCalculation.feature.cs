@@ -298,7 +298,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Place and calculate order (with constant expected result)")]
-        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "56.1", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "18:00", "56.1", null)]
         public virtual void PlaceAndCalculateOrderWithConstantExpectedResult(string drinks, string starters, string mains, string time, string totalPrice, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;

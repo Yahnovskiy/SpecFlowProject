@@ -56,8 +56,8 @@ Scenario Outline: Place and calculate order (with constant expected result)
 	When I place order and get calculated total price with fees
 	And Total price with fees should be '<TotalPrice>'
 	Examples:
-	  | Drinks | Starters | Mains | Time | TotalPrice |
-	  | 4      | 4        | 4     | Now  |   56.1     |
+	  | Drinks | Starters | Mains | Time  | TotalPrice |
+	  | 4      | 4        | 4     | 18:00 |   56.1     |
    
 Scenario Outline: Place, update and calculate order with time (with constant expected result)
 	Given I store my order

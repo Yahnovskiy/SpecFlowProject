@@ -17,7 +17,7 @@ public static class NumberExtensions
 
     public static double ToDouble(this object obj)
     {
-        IConvertible convert = obj as IConvertible;
+        IConvertible? convert = obj as IConvertible;
         return convert?.ToDouble(null) ?? 0d;
     }
 }

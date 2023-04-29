@@ -10,14 +10,15 @@ public static class ObjectToDictionaryHelper
             ThrowExceptionWhenSourceArgumentIsNull();
 
         var dictionary = new Dictionary<string, object>();
-        foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
-            AddPropertyToDictionary<object>(property, source, dictionary);
+        if (source != null)
+            foreach (PropertyDescriptor property in TypeDescriptor.GetProperties(source))
+                AddPropertyToDictionary<object>(property, source, dictionary);
         return dictionary;
     }
 
     private static void AddPropertyToDictionary<T>(PropertyDescriptor property, object source, Dictionary<string, T> dictionary)
     {
-        object value = property.GetValue(source);
+        object value = property.GetValue(source)!;
         if (IsOfType<T>(value))
             dictionary.Add(property.Name, (T)value);
     }

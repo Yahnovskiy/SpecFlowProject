@@ -34,7 +34,6 @@ public class FakeApiClient
         else if(foodItem.Key.Equals(FoodType.Starters.ToString()))
             foodPrice = foodItem.Value.ToDouble()*ConstantsFoodCosts.Starters;
         
-        var qwe = CalculatePriceWithFees(foodPrice);
         return CalculatePriceWithFees(foodPrice);
     }
     

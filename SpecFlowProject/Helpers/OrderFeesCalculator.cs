@@ -24,13 +24,16 @@ public class OrderFeesCalculator
     private double CalculateFoodPrice(KeyValuePair<string, object> foodItem, TimeSpan setTime)
     {
         double foodPrice = 0;
-        if (foodItem.Key.Equals(FoodType.Drinks.ToString()) && IsDrinkDiscounted(setTime))
-            foodPrice = CalculateDrinkWithDiscount(foodItem.Value.ToDouble()*ConstantsFoodCosts.Drinks);
+        if (foodItem.Key.Equals(FoodType.Drinks.ToString()))
+        {
+            var drinksPriceSum = foodItem.Value.ToDouble() * ConstantsFoodCosts.Drinks;
+            foodPrice = IsDrinkDiscounted(setTime) ? CalculateDrinkWithDiscount(drinksPriceSum) : drinksPriceSum; 
+        }
         else if(foodItem.Key.Equals(FoodType.Mains.ToString()))
             foodPrice = foodItem.Value.ToDouble()*ConstantsFoodCosts.Mains;
         else if(foodItem.Key.Equals(FoodType.Starters.ToString()))
             foodPrice = foodItem.Value.ToDouble()*ConstantsFoodCosts.Starters;
-        var qwe = CalculatePriceWithFees(foodPrice);
+        
         return CalculatePriceWithFees(foodPrice);
     }
     

@@ -28,17 +28,10 @@ public class UpdateOrderStepsDefinitions
         _scenarioContext.Remove("totalActual");
         _scenarioContext.Add("totalActual", totalActual);
     }
-
-    [When(@"I add food to my order")]
-    public void WhenIAddFoodToMyOrder(Table table)
-    {
-        
-    }
-
+    
     [When(@"I add food to my order when drinks non discounted")]
     public void WhenIAddFoodToMyOrderWhenDrinksNonDiscounted(Table table)
     {
-        _scenarioContext.Add("additionalOrderData",  table.CreateInstance<OrderData>());
-        
+        _scenarioContext.Add("additionalOrderData", table.CreateInstance<OrderData>());
     }
 }

@@ -298,7 +298,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Place and calculate order (with constant expected result)")]
-        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "56.1", null)]
         public virtual void PlaceAndCalculateOrderWithConstantExpectedResult(string drinks, string starters, string mains, string time, string totalPrice, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -309,7 +309,7 @@ this.ScenarioInitialize(scenarioInfo);
             argumentsOfScenario.Add("Time", time);
             argumentsOfScenario.Add("TotalPrice", totalPrice);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place and calculate order (with constant expected result)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 51
+#line 52
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -339,17 +339,14 @@ this.ScenarioInitialize(scenarioInfo);
                             string.Format("{0}", starters),
                             string.Format("{0}", mains),
                             string.Format("{0}", time)});
-#line 52
+#line 53
  testRunner.Given("I store my order", ((string)(null)), table6, "Given ");
 #line hidden
-#line 55
+#line 56
  testRunner.When("I place order and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 56
- testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 57
- testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And(string.Format("Total price with fees should be \'{0}\'", totalPrice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -436,7 +433,7 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Place, update and calculate order (with constant expected result)")]
-        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "3", "3", "3", "", "", null)]
+        [NUnit.Framework.TestCaseAttribute("4", "4", "4", "Now", "3", "3", "3", "56.10", "42.08", null)]
         public virtual void PlaceUpdateAndCalculateOrderWithConstantExpectedResult(string drinks, string starters, string mains, string time, string drinksUpdated, string startersUpdated, string mainsUpdated, string totalPrice, string totalPriceWithUpdated, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
@@ -488,10 +485,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I place order and get calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 82
- testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 83
- testRunner.And("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Total price with fees should be \'{0}\'", totalPrice), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
                             "Drinks",
@@ -503,14 +497,14 @@ this.ScenarioInitialize(scenarioInfo);
                             string.Format("{0}", startersUpdated),
                             string.Format("{0}", mainsUpdated),
                             string.Format("{0}", time)});
-#line 84
+#line 83
  testRunner.When("I update current order", ((string)(null)), table10, "When ");
 #line hidden
-#line 87
+#line 86
  testRunner.And("I calculate expected order price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 88
- testRunner.Then("I check calculated total price with fees", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 87
+ testRunner.And(string.Format("Total price with fees should be \'{0}\'", totalPriceWithUpdated), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

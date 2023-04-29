@@ -47,17 +47,17 @@ Scenario Outline: Place, update and calculate order
 	  | Drinks | Starters | Mains | Time | DrinksUpdated | StartersUpdated | MainsUpdated |
 	  | 4      | 4        | 4     | Now  | 3             | 3               | 3            |
 	
+
 #utilized hardcoded expected values via constants in Examples tables
 Scenario Outline: Place and calculate order (with constant expected result)
 	Given I store my order
 	  | Drinks   | Starters   | Mains   | Time   |
 	  | <Drinks> | <Starters> | <Mains> | <Time> |
 	When I place order and get calculated total price with fees
-	And I calculate expected order price
-	Then I check calculated total price with fees
+	And Total price with fees should be '<TotalPrice>'
 	Examples:
 	  | Drinks | Starters | Mains | Time | TotalPrice |
-	  | 4      | 4        | 4     | Now  |            |
+	  | 4      | 4        | 4     | Now  |   56.1     |
    
 Scenario Outline: Place, update and calculate order with time (with constant expected result)
 	Given I store my order
@@ -79,13 +79,12 @@ Scenario Outline: Place, update and calculate order (with constant expected resu
 	  | Drinks   | Starters   | Mains   | Time   |
 	  | <Drinks> | <Starters> | <Mains> | <Time> |
 	And I place order and get calculated total price with fees
-	And I calculate expected order price
-	And I check calculated total price with fees
+	And Total price with fees should be '<TotalPrice>'
 	When I update current order
 	  | Drinks          | Starters          | Mains          | Time   |
 	  | <DrinksUpdated> | <StartersUpdated> | <MainsUpdated> | <Time> |
 	And I calculate expected order price
-	Then I check calculated total price with fees
+	And Total price with fees should be '<TotalPriceWithUpdated>'
 	Examples:
 	  | Drinks | Starters | Mains | Time | DrinksUpdated | StartersUpdated | MainsUpdated | TotalPrice | TotalPriceWithUpdated |
-	  | 4      | 4        | 4     | Now  | 3             | 3               | 3            |            |                       |
+	  | 4      | 4        | 4     | Now  | 3             | 3               | 3            |  56.10     |  42.08                |

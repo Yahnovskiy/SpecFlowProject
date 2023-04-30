@@ -6,11 +6,12 @@ namespace SpecFlowProject.Client;
 public class FakeApiClient
 {
     private readonly TimeSpan _timeSpan = DateTime.UtcNow.TimeOfDay;
+
     public (double orderTotal, Guid id) PlaceOrder(Dictionary<string, object> orderedFood)
     {
         var time = orderedFood["Time"].ToTimeSpan();
         var setTime = time != default ? time : _timeSpan;
-        
+
         var totalPriceList = orderedFood.Select(foodItem => CalculateFoodPrice(foodItem, setTime)).ToList();
         return (totalPriceList.Sum(), Guid.NewGuid());
     }
@@ -24,27 +25,36 @@ public class FakeApiClient
     private double CalculateFoodPrice(KeyValuePair<string, object> foodItem, TimeSpan setTime)
     {
         double foodPrice = 0;
-        if (foodItem.Key.Equals(FoodType.Drinks.ToString()))
+        double itemValue = foodItem.Value.ToDouble();
+
+        switch (foodItem.Key)
         {
-            var drinksPriceSum = foodItem.Value.ToDouble() * ConstantsFoodCosts.Drinks;
-            foodPrice = IsDrinkDiscounted(setTime) ? CalculateDrinkWithDiscount(drinksPriceSum) : drinksPriceSum; 
+            case string key when key.Equals(FoodType.Drinks.ToString()):
+                var drinksPriceSum = itemValue * ConstantsFoodCosts.Drinks;
+                foodPrice = IsDrinkDiscounted(setTime) ? CalculateDrinkWithDiscount(drinksPriceSum) : drinksPriceSum;
+                break;
+            case string key when key.Equals(FoodType.Mains.ToString()):
+                foodPrice = itemValue * ConstantsFoodCosts.Mains;
+                break;
+            case string key when key.Equals(FoodType.Starters.ToString()):
+                foodPrice = itemValue * ConstantsFoodCosts.Starters;
+                break;
         }
-        else if(foodItem.Key.Equals(FoodType.Mains.ToString()))
-            foodPrice = foodItem.Value.ToDouble()*ConstantsFoodCosts.Mains;
-        else if(foodItem.Key.Equals(FoodType.Starters.ToString()))
-            foodPrice = foodItem.Value.ToDouble()*ConstantsFoodCosts.Starters;
-        
+
         return CalculatePriceWithFees(foodPrice);
     }
-    
+
     private double CalculatePriceWithFees(double foodPrice)
     {
-        return foodPrice != 0 ? foodPrice + (foodPrice * ConstantsDiscount.FoodFees) / 100 : 0;
+        //we can use 
+        //decimal result = Decimal.Multiply(foodPrice, Decimal.Add(100m, ConstantsDiscount.FoodFees))/100m;
+
+        return foodPrice + (foodPrice * ConstantsDiscount.FoodFees / 100);
     }
-    
+
     private double CalculateDrinkWithDiscount(double foodPrice)
     {
-        return foodPrice != 0 ? foodPrice - ((foodPrice * ConstantsDiscount.DrinksDiscount) / 100) : 0;
+        return foodPrice - (foodPrice * ConstantsDiscount.DrinksDiscount / 100);
     }
 
     private bool IsDrinkDiscounted(TimeSpan setTime)

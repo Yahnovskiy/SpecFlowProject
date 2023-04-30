@@ -23,8 +23,7 @@ public class CalculateOrderFeesStepDefinitions
     {
         var orderData = _scenarioContext.Get<OrderData>("orderData").ToDictionary();
         var calculateExpectedOrderData = _orderFeesCalculator.PlaceOrder(orderData).orderTotal.ToDoubleRound();
-        _scenarioContext.Remove("totalExpected");
-        _scenarioContext.Add("totalExpected", calculateExpectedOrderData);
+        _scenarioContext.Set(calculateExpectedOrderData, "totalExpected");
     }
     
     [Given(@"I check calculated total price with fees")]
@@ -49,8 +48,7 @@ public class CalculateOrderFeesStepDefinitions
         var totalOrderPrice = _orderFeesCalculator.PlaceOrder(orderData).orderTotal +
                               _orderFeesCalculator.PlaceOrder(additionalOrderData).orderTotal;
         
-        _scenarioContext.Remove("totalExpected");
-        _scenarioContext.Add("totalExpected", totalOrderPrice);    
+        _scenarioContext.Set(totalOrderPrice, "totalExpected");    
     }
 
     [Given(@"Total price with fees should be '(.*)'")]

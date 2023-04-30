@@ -7,12 +7,15 @@ namespace SpecFlowProject.Hooks
     public class Hooks
     {
         //possible to add next methods
-        //BeforeScenario
+        //[BeforeTestRun]
+        //[BeforeFeature]
+        //[BeforeScenario]
+        //initialize Logger
         //remove old data
         //-create user (set into db)
         //-set prices for food
         
-        //AfterScenario
+        //[AfterScenario], etc...
         //-delete user
         //-set default food prices
     }

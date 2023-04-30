@@ -6,12 +6,12 @@ using TechTalk.SpecFlow.Assist;
 namespace SpecFlowProject.Steps;
 
 [Binding]
-public class StoreOrderFeesStepDefinitions
+public class PlaceOrderFeesStepDefinitions
 {
     private readonly FakeApiClient _fakeApiClient = new();
     private readonly OrderFeesCalculator _orderFeesCalculator = new();
     private readonly ScenarioContext _scenarioContext;
-    public StoreOrderFeesStepDefinitions(ScenarioContext scenarioContext)
+    public PlaceOrderFeesStepDefinitions(ScenarioContext scenarioContext)
     {
         _scenarioContext = scenarioContext;
     }
@@ -19,7 +19,7 @@ public class StoreOrderFeesStepDefinitions
     [Given(@"I store my order")]
     public void GivenIPlaceOrder(Table table)
     {
-        _scenarioContext.Add("orderData",  table.CreateInstance<OrderData>());
+        _scenarioContext.Set(table.CreateInstance<OrderData>(), "orderData");
     }
     
     [Given(@"I place order and get calculated total price with fees")]
@@ -27,7 +27,7 @@ public class StoreOrderFeesStepDefinitions
     public void WhenIGetCalculatedTotalPriceWithFees()
     {
         var orderData = _scenarioContext.Get<OrderData>("orderData").ToDictionary();
-        _scenarioContext.Add("totalActual", _fakeApiClient.PlaceOrder(orderData));
+        _scenarioContext.Set(_fakeApiClient.PlaceOrder(orderData), "totalActual");
     } 
     
     [When(@"I place order with new items and get calculated total price with fees")]
@@ -40,7 +40,6 @@ public class StoreOrderFeesStepDefinitions
         var placeOrderBeforeDrinksDiscount = _fakeApiClient.PlaceOrder(orderData);
         var placeOrderAfterDrinksDiscount = _fakeApiClient.PlaceOrder(additionalOrderData);
         var totalOrderPrice = placeOrderBeforeDrinksDiscount.orderTotal + placeOrderAfterDrinksDiscount.orderTotal;
-        _scenarioContext.Remove("totalActual");
-        _scenarioContext.Add("totalActual", (totalOrderPrice, placeOrderBeforeDrinksDiscount.id));
+        _scenarioContext.Set((totalOrderPrice, placeOrderBeforeDrinksDiscount.id), "totalActual");
     }
 }

@@ -13,7 +13,7 @@ public class OrderFeesCalculator
     
     private readonly TimeSpan _timeSpan = DateTime.UtcNow.TimeOfDay;
 
-    public (double orderTotal, Guid id) PlaceOrder(Dictionary<string, object> orderedFood)
+    public (decimal orderTotal, Guid id) PlaceOrder(Dictionary<string, object> orderedFood)
     {
         var time = orderedFood["Time"].ToTimeSpan();
         var setTime = time != default ? time : _timeSpan;
@@ -22,10 +22,10 @@ public class OrderFeesCalculator
         return (totalPriceList.Sum(), Guid.NewGuid());
     }
 
-    private double CalculateFoodPrice(KeyValuePair<string, object> foodItem, TimeSpan setTime)
+    private decimal CalculateFoodPrice(KeyValuePair<string, object> foodItem, TimeSpan setTime)
     {
-        double foodPrice = 0;
-        double itemValue = foodItem.Value.ToDouble();
+        decimal foodPrice = 0;
+        decimal itemValue = foodItem.Value.ToDecimal();
 
         switch (foodItem.Key)
         {
@@ -44,7 +44,7 @@ public class OrderFeesCalculator
         return CalculatePriceWithFees(foodPrice);
     }
 
-    private double CalculatePriceWithFees(double foodPrice)
+    private decimal CalculatePriceWithFees(decimal foodPrice)
     {
         //we can use 
         //decimal result = Decimal.Multiply(foodPrice, Decimal.Add(100m, ConstantsDiscount.FoodFees))/100m;
@@ -52,7 +52,7 @@ public class OrderFeesCalculator
         return foodPrice + (foodPrice * ConstantsDiscount.FoodFees / 100);
     }
 
-    private double CalculateDrinkWithDiscount(double foodPrice)
+    private decimal CalculateDrinkWithDiscount(decimal foodPrice)
     {
         return foodPrice - (foodPrice * ConstantsDiscount.DrinksDiscount / 100);
     }

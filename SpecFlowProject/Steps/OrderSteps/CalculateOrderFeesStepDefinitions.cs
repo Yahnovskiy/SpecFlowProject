@@ -22,7 +22,7 @@ public class CalculateOrderFeesStepDefinitions
     public void WhenICalculateExpectedOrderPrice()
     {
         var orderData = _scenarioContext.Get<OrderData>("orderData").ToDictionary();
-        var calculateExpectedOrderData = _orderFeesCalculator.PlaceOrder(orderData).orderTotal.ToDoubleRound();
+        var calculateExpectedOrderData = _orderFeesCalculator.PlaceOrder(orderData).orderTotal.ToDecimalRound();
         _scenarioContext.Set(calculateExpectedOrderData, "totalExpected");
     }
     
@@ -31,8 +31,8 @@ public class CalculateOrderFeesStepDefinitions
 
     public void ThenICheckCalculatedTotalPriceWithFees()
     {
-        var totalActual = _scenarioContext.Get<(double , Guid)>("totalActual").Item1.ToDoubleRound();
-        var totalExpected = _scenarioContext.Get<double>("totalExpected").ToDoubleRound();
+        var totalActual = _scenarioContext.Get<(decimal , Guid)>("totalActual").Item1.ToDecimalRound();
+        var totalExpected = _scenarioContext.Get<decimal>("totalExpected").ToDecimalRound();
 
         totalActual.Should().Be(totalExpected, "Actual total order price was not equal to expected price");
     }
@@ -54,9 +54,9 @@ public class CalculateOrderFeesStepDefinitions
     [Given(@"Total price with fees should be '(.*)'")]
     [When(@"Total price with fees should be '(.*)'")]
     [Then(@"Total price with fees should be '(.*)'")]
-    public void GivenTotalPriceWithFeesShouldBe(double totalExpected)
+    public void GivenTotalPriceWithFeesShouldBe(decimal totalExpected)
     {
-        var totalActual = _scenarioContext.Get<(double , Guid)>("totalActual").Item1.ToDoubleRound();
+        var totalActual = _scenarioContext.Get<(decimal , Guid)>("totalActual").Item1.ToDecimalRound();
         totalActual.Should().Be(totalExpected, "Actual total order price was not equal to expected price");
     }
 }

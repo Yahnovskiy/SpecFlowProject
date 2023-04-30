@@ -21,7 +21,7 @@ public class UpdateOrderStepsDefinitions
         var orderData = table.CreateInstance<OrderData>();
         _scenarioContext.Set(table.CreateInstance<OrderData>(), "orderData");
         
-        var actualOrderId = _scenarioContext.Get<(double , Guid)>("totalActual").Item2;
+        var actualOrderId = _scenarioContext.Get<(decimal , Guid)>("totalActual").Item2;
         var totalActual = _fakeApiClient.UpdateOder(orderData.ToDictionary(), actualOrderId);
         
         _scenarioContext.Set(totalActual, "totalActual");

@@ -4,20 +4,25 @@ namespace SpecFlowProject.Extensions;
 
 public static class NumberExtensions
 {
-    public static double ToDoubleRound(this double value)
+    public static decimal ToDecimalRound(this decimal value)
     {
         return Math.Round(value, 2, MidpointRounding.AwayFromZero);
     }
-    
-    public static double ToDoubleRound(this string value)
+
+    public static decimal ToDecimalRound(this double value)
     {
-        double d = double.Parse(value, CultureInfo.InvariantCulture);
+        return Math.Round(Convert.ToDecimal(value), 2, MidpointRounding.AwayFromZero);
+    }
+
+    public static decimal ToDecimalRound(this string value)
+    {
+        decimal d = decimal.Parse(value, CultureInfo.InvariantCulture);
         return Math.Round(d, 2, MidpointRounding.AwayFromZero);
     }
 
-    public static double ToDouble(this object obj)
+    public static decimal ToDecimal(this object obj)
     {
         IConvertible? convert = obj as IConvertible;
-        return convert?.ToDouble(null) ?? 0d;
+        return convert?.ToDecimal(null) ?? 0m;
     }
 }

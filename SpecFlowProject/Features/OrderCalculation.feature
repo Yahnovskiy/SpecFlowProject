@@ -1,7 +1,9 @@
 ﻿Feature: Order calculation
 	In the first three scenarios implemented calculation expected order values via automation code
 	In the next three scenarios implemented hardcoded expected order value with fees
-	
+----------------------------------------------
+	not clear time range for Drinks discount, specified only 19:00 but from value non specified
+		
 #calculated expected values via automation code
 Scenario Outline: Place and calculate order
 	Given I store my order
